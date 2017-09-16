@@ -1,5 +1,7 @@
 ## Do not change import statements.
 import unittest
+from helper_functions import *
+
 from SI507F17_project1_cards import *
 
 ## Write your unit tests to test the cards code here.
@@ -30,11 +32,52 @@ class TestCard(unittest.TestCase):
         self.assertEqual(str(self.king_hearts), "King of Hearts")
 
 class TestDeck(unittest.TestCase):
-    def setUp(self):
-        self.deck = Deck()
 
     def test_deck_self_cards_type(self):
+        self.deck = Deck()
         self.assertEqual(type(self.deck.cards), list)
+
+    def test_deck_self_cards_instance_of_Cards(self):
+        self.deck = Deck()
+        self.assertIsInstance(self.deck.cards[0], Card)
+
+    def test_deck_self_cards_instance_of_Cards_part_2(self): #testing all elements
+        self.deck = Deck()
+        for card_object in self.deck.cards:
+            self.assertIsInstance(card_object, Card)
+
+    def test_deck_self_cards_length(self):
+        self.deck = Deck()
+        self.assertEqual(len(self.deck.cards), 52)
+
+    def test_deck_return_52_line_string(self):
+        self.deck = Deck()
+        d_string = str(self.deck)
+        d_list = d_string.split('\n')
+        self.assertEqual(len(d_list),52)
+
+    def test_pop_card(self):
+        self.deck = Deck()
+        for x in range(0,52):
+            self.deck.pop_card()
+        self.assertEqual(len(self.deck.cards),0)
+
+    def test_shuffle(self):
+        first_deck = Deck()
+        second_deck = Deck()
+        first_deck.shuffle()
+        self.assertFalse(first_deck.cards == second_deck.cards)
+
+    def test_sort_cards(self):
+
+
+    # def test_replace_missing_card(self):
+    #     self.deck = Deck()
+    #     original_cards = self.deck.cards #list of original cards
+    #     take_one_card = original_cards.pop(0) #a new list without the ace of diamonds
+    #     replaced_card_list = self.deck.replace_card(original_cards[0])
+    #     self.assertEqual(original_cards, replaced_card_list, "comparing original card list with replaced card list after using replace method")
+
 
 class TestWar(unittest.TestCase):
     def test_war_type(self):
@@ -60,7 +103,15 @@ class TestWar(unittest.TestCase):
             self.assertTrue(war[1]==war[2])
 
 
-#if player one won, player one score should be more than player two
+class TestSong(unittest.TestCase):
+    #does it show one instance of class song_dictionary
+    def test_one_instance(self):
+        asong = show_song()
+        self.assertIsInstance(asong,Song, "is asong an instance of class Song")
+
+    def test_search_in_song(self):
+        asong2 = show_song("The Hardest Thing")
+        self.assertTrue("The Hardest Thing" in str(asong2))
 
 
 
@@ -69,4 +120,5 @@ class TestWar(unittest.TestCase):
 
 
 
-unittest.main(verbosity=2)
+if __name__ == '__main__': #only runs if you call this direct program
+    unittest.main(verbosity=2)
