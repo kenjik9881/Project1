@@ -69,6 +69,24 @@ class TestDeck(unittest.TestCase):
         self.assertFalse(first_deck.cards == second_deck.cards)
 
     def test_sort_cards(self):
+        orig_deck = Deck()
+        another_deck = Deck()
+        another_deck.shuffle()
+        another_deck.sort_cards()
+        self.assertTrue(str(orig_deck)==str(another_deck))
+
+    def test_deal_hand(self):
+        deck = Deck()
+        the_deal = deck.deal_hand(52)
+        self.assertRaises(IndexError, the_deal)
+
+    def test_deal_hand2(self):
+        deck = Deck()
+        my_hand = deck.deal_hand(4)
+        print([str(c) for c in my_hand])
+
+
+
 
 
     # def test_replace_missing_card(self):
