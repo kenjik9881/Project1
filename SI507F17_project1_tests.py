@@ -77,25 +77,24 @@ class TestDeck(unittest.TestCase):
 
     def test_deal_hand(self):
         deck = Deck()
-        the_deal = deck.deal_hand(52)
-        self.assertRaises(IndexError, the_deal)
+        try:
+            the_deal = deck.deal_hand(52)
+            alist = [str(card) for card in the_deal]
+
+        except:
+            self.assertRaises(IndexError, the_deal)
 
     def test_deal_hand2(self):
         deck = Deck()
-        my_hand = deck.deal_hand(4)
+        my_hand = deck.deal_hand(5)
+        self.assertTrue(len(my_hand), 5)
         print([str(c) for c in my_hand])
 
-
-
-
-
-    # def test_replace_missing_card(self):
-    #     self.deck = Deck()
-    #     original_cards = self.deck.cards #list of original cards
-    #     take_one_card = original_cards.pop(0) #a new list without the ace of diamonds
-    #     replaced_card_list = self.deck.replace_card(original_cards[0])
-    #     self.assertEqual(original_cards, replaced_card_list, "comparing original card list with replaced card list after using replace method")
-
+    def test_replace_missing_card(self):
+        deck = Deck()
+        deck.pop_card()
+        deck.replace_card(Card(3,13))
+        self.assertEqual(deck.cards[52], "13 of Spades", "comparing original card list with replaced card list after using replace method")
 
 class TestWar(unittest.TestCase):
     def test_war_type(self):
