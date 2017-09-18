@@ -77,24 +77,19 @@ class TestDeck(unittest.TestCase):
 
     def test_deal_hand(self):
         deck = Deck()
-        try:
-            the_deal = deck.deal_hand(52)
-            alist = [str(card) for card in the_deal]
+        the_deal = deck.deal_hand(52) #"this is raising an error when trying to deal 52 cards"
+        self.assertTrue(len(the_deal) == 52)
 
-        except:
-            self.assertRaises(IndexError, the_deal)
-
-    def test_deal_hand2(self):
+    def test_deal_hand2(self): #testing deal_hand on a smaller hand size
         deck = Deck()
         my_hand = deck.deal_hand(5)
         self.assertTrue(len(my_hand), 5)
-        print([str(c) for c in my_hand])
 
-    def test_replace_missing_card(self):
-        deck = Deck()
-        deck.pop_card()
-        deck.replace_card(Card(3,13))
-        self.assertEqual(deck.cards[52], "13 of Spades", "comparing original card list with replaced card list after using replace method")
+    def test_replace_card_func(self):
+        self.deck = Deck()
+        replacing_the_card = self.deck.pop_card()
+        self.deck.replace_card(replacing_the_card)
+        self.assertTrue(replacing_the_card in self.deck.cards)
 
 class TestWar(unittest.TestCase):
     def test_war_type(self):
