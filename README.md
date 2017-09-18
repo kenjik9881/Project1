@@ -1,6 +1,6 @@
 SI 507 Project 1 - Read Me File
 
-~~What is this?~~
+~~What is this?~
 
 This project includes code that replicates some actions that you can take with a real deck of cards.
 The code specifies two classes, class Card and class Deck.
@@ -34,21 +34,21 @@ The play_war_game function mimics the popular two-player card game, War. War all
 
 The show_song is a fun function that aims to take a string as input to use as a search term for songs on iTunes. You should be able to search for any song but there is a bug which causes it to only search for songs that have "win","winner","hurrah", or "hooray" in the song title.
 
-~~ Is the code ready? ~~
+~ Is the code ready? ~
 The code is almost there. There are three bugs identified as mentioned earlier. These bugs are:
 * a bug with the string method in class Card
 * a bug with the deal_hand method in class Deck
 * a bug with the show_song function that doesn't actually search the iTunes API for any user-inputted information but rather picks randomly from four search terms.
 
-~~How do I access this code and make clone of my own?~~
+~ How do I access this code and make clone of my own? ~
 You can access it here: https://github.com/kenjik9881/Project1
 From here simply click on the 'Fork' button to create your own clone of this code.
 The code file is SI507F17_project1_cards.py
 This code uses Python 3.6
 
-~~What packages or libraries do I need?~~
+~ What packages or libraries do I need? ~
 All the necessary packages to run this code are listed in the 'requirements.txt' file. This file is available on https://github.com/kenjik9881/Project1
 
-~~Where are the tests?~~
+~ Where are the tests? ~
 The tests are also accessible on this link:https://github.com/kenjik9881/Project1
 The test file is SI507F17_project1_tests.py
